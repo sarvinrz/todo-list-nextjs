@@ -1,14 +1,25 @@
 import React from 'react';
-import styles from '@/styles/FilterButtons.module.css';
+import styles from './FilterButtons.module.css';
 import { useTranslation } from 'react-i18next';
+import { LuArchiveRestore, LuLayoutTemplate } from 'react-icons/lu';
+import { IoCheckmarkDoneSharp } from 'react-icons/io5';
 
 const FilterButtons = function () {
   const { t } = useTranslation();
   return (
     <div className={styles.mainButton}>
-      <button>{t('All')}</button>
-      <button>{t('Completed')}</button>
-      <button>{t('Active')}</button>
+      <button>
+        <LuLayoutTemplate fontSize={18} />
+        {t('All')}
+      </button>
+      <button>
+        <IoCheckmarkDoneSharp fontSize={18} />
+        {t('Active')}
+      </button>
+      <button>
+        <LuArchiveRestore fontSize={18} />
+        {t('Completed')}
+      </button>
     </div>
   );
 };

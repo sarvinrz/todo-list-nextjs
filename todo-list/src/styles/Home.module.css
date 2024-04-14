@@ -1,9 +1,8 @@
 .main {
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(187, 192, 197);
-  color: rgb(68, 50, 50);
+  background-color: rgb(247, 247, 247);
+  color: black;
   font-family: 'Vazirmatn';
+  width: 100%;
 }
 
 .layout {
@@ -15,11 +14,14 @@
 }
 
 .layout p {
-  background-color: rgb(153, 151, 151);
+  display: flex;
+  width: 101%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(20, 50, 145);
   padding: 8px;
-  color: black;
+  color: white;
   font-size: 32px;
-  border: 1px solid gray;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   font-weight: bold;
 }
