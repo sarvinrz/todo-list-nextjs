@@ -9,8 +9,8 @@
 
 .description {
   display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
+  justify-content: center;
+  align-items: center;
   font-size: 0.85rem;
   max-width: var(--max-width);
   width: 100%;
@@ -32,6 +32,8 @@
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
+  font-weight: bolder;
+  font-size: x-large;
 }
 
 .code {
@@ -97,7 +99,7 @@
 
 .center::before,
 .center::after {
-  content: "";
+  content: '';
   left: 50%;
   position: absolute;
   filter: blur(45px);
