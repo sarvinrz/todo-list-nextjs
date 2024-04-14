@@ -1,13 +1,15 @@
 import React from 'react';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/FilterButtons.module.css';
 import { useTranslation } from 'react-i18next';
 
 const FilterButtons = function () {
   const { t } = useTranslation();
   return (
-    <main className={`${styles.main}`}>
-      <div className='filter-buttons'>{t('button')}</div>
-    </main>
+    <div className={styles.mainButton}>
+      <button>{t('All')}</button>
+      <button>{t('Completed')}</button>
+      <button>{t('Active')}</button>
+    </div>
   );
 };
 

@@ -1,0 +1,16 @@
+.mainButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainButton button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  font-family: 'Vazirmatn';
+}
