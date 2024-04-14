@@ -12,7 +12,10 @@
     "i18next": "^23.11.1",
     "next": "14.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-i18next": "^14.1.0",
+    "react-spinners": "^0.13.8",
+    "vazirmatn": "^33.0.3"
   },
   "devDependencies": {
     "@types/node": "^20",

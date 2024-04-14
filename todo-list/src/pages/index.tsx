@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
-import FilterButtons from '@/components/FilterButtons';
-
-const inter = Inter({ subsets: ['latin'] });
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../utils/i18';
+import MainLayout from '@/layouts/MainLayout';
+import { Suspense } from 'react';
+import Fallback from '@/shared/Fallback';
 
 export default function Home() {
   return (
@@ -15,12 +14,11 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='todo-icon' href='/todo.png' />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>todo list</p>
-        </div>
-        <FilterButtons />
-      </main>
+      <I18nextProvider i18n={i18n}>
+        <MainLayout>
+          <Suspense fallback={<Fallback />}></Suspense>
+        </MainLayout>
+      </I18nextProvider>
     </>
   );
 }
