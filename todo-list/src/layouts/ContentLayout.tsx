@@ -10,11 +10,11 @@ export enum TodoFilterEnumType {
   ALL = 'ALL',
 }
 
-interface MainLayoutProps {
-  children: React.ReactNode;
-}
+// interface MainLayoutProps {
+//   children: React.ReactNode;
+// }
 
-const MainLayout: React.FC<MainLayoutProps> = function ({ children }) {
+const MainLayout = function () {
   const { t } = useTranslation();
 
   const [selectedFilter, setSelectedFilter] = useState<TodoFilterEnumType>(
