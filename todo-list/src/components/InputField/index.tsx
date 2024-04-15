@@ -4,17 +4,23 @@ import {
   setTodosFromLocalStorage,
   toggleTodo,
 } from '@/store/features/todoSlice';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './InputField.module.css';
 import TodoList from '../TodoList';
+import AddButton from '../AddButton';
+import { TodoFilterEnumType } from '@/layouts/ContentLayout';
 
-const InputFiled = function () {
+interface InputFieldProps {
+  selectedFilter: TodoFilterEnumType;
+}
+
+const InputFiled: React.FC<InputFieldProps> = function ({ selectedFilter }) {
   const text = useSelector((state: RootState) => state.todos.todos);
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [inputValue, setInputValue] = useState('');
 
   const { t } = useTranslation();
@@ -34,6 +40,19 @@ const InputFiled = function () {
   const handleToggleTodo = (id: number) => {
     dispatch(toggleTodo(id)); // Dispatch toggleTodo action with the todo id
   };
+
+  const filteredTodos = useMemo(() => {
+    switch (selectedFilter) {
+      case TodoFilterEnumType.ALL:
+        return text;
+      case TodoFilterEnumType.CHECKED:
+        return text.filter((t) => t.completed);
+      case TodoFilterEnumType.UNCHECKED:
+        return text.filter((t) => !t.completed);
+      default:
+        return text;
+    }
+  }, [text, selectedFilter]);
 
   const onAddButtonClicked = () => {
     if (inputValue.trim() !== '') {
@@ -62,9 +81,11 @@ const InputFiled = function () {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-        <button onClick={onAddButtonClicked}>+</button>
+        <AddButton onAddButtonClicked={onAddButtonClicked} />
       </div>
-      {open && <TodoList todos={text} onToggleTodo={handleToggleTodo} />}
+      {open && (
+        <TodoList todos={filteredTodos} onToggleTodo={handleToggleTodo} />
+      )}
     </div>
   );
 };

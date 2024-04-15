@@ -5,14 +5,14 @@
   background-color: rgb(247, 247, 247);
   color: black;
   font-family: 'Vazirmatn';
-  min-height: 100vh;
+  min-height: 100vw;
   width: 100%;
 }
 
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vw;
 }
 
 .layout p {

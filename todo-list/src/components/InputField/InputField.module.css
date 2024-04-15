@@ -18,11 +18,13 @@
 .inputField button {
   display: flex;
   justify-content: center;
+  color: white;
+  background-color: rgb(20, 50, 145);
   align-items: center;
   width: 45px;
   height: 45px;
   padding: 20px;
   border-radius: 50px;
-  border: 2px solid black;
-  font-size: 34px;
+  border: 2px solid rgb(20, 50, 145);
+  font-size: 42px;
 }
