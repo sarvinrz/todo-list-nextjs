@@ -1,27 +1,46 @@
 import { RootState } from '@/store';
-import { setText } from '@/store/features/textSlice';
+import {
+  setTodo,
+  setTodosFromLocalStorage,
+  toggleTodo,
+} from '@/store/features/todoSlice';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './InputField.module.css';
+import TodoList from '../TodoList';
 
 const InputFiled = function () {
-  const text = useSelector((state: RootState) => state.text.value);
+  const text = useSelector((state: RootState) => state.todos.todos);
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const { t } = useTranslation();
 
   const textFieldRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    dispatch(setText(value));
+    setInputValue(event.target.value);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      onAddButtonClicked();
+    }
+  };
+
+  const handleToggleTodo = (id: number) => {
+    dispatch(toggleTodo(id)); // Dispatch toggleTodo action with the todo id
   };
 
   const onAddButtonClicked = () => {
-    setOpen(true);
+    if (inputValue.trim() !== '') {
+      dispatch(setTodo(inputValue.trim())); //dispatch input in addTodo action
+      setOpen(true);
+      setInputValue('');
+    }
   };
 
   useEffect(() => {
@@ -29,7 +48,8 @@ const InputFiled = function () {
     if (textFieldRef.current) {
       textFieldRef.current.focus();
     }
-  });
+    dispatch(setTodosFromLocalStorage()); // Load todos from local storage
+  }, [dispatch]);
 
   return (
     <div>
@@ -38,12 +58,13 @@ const InputFiled = function () {
         <input
           ref={textFieldRef}
           type='text'
-          value={text}
+          value={inputValue}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={onAddButtonClicked}>+</button>
       </div>
-      {open && <div className={styles.modal}>hello</div>}
+      {open && <TodoList todos={text} onToggleTodo={handleToggleTodo} />}
     </div>
   );
 };

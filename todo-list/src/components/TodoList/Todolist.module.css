@@ -1,0 +1,13 @@
+.modal {
+  display: flex;
+  background-color: lightgray;
+  border: 2px solid black;
+  width: 100%;
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal p {
+  background-color: lightgray;
+}

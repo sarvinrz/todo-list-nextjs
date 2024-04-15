@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import textReducer from './features/textSlice';
+import todosReducer from './features/todoSlice';
 
 export const store = configureStore({
   reducer: {
-    text: textReducer,
+    todos: todosReducer,
   },
 });
 
