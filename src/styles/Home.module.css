@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(247, 247, 247);
+  color: black;
+  font-family: 'Vazirmatn';
+  min-height: 100vw;
+  width: 100%;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vw;
+}
+
+.layout p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(20, 50, 145);
+  padding: 8px;
+  margin-top: 0px;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
